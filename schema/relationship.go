@@ -225,6 +225,11 @@ func (schema *Schema) buildPolymorphicRelation(relation *Relationship, field *Fi
 	relation.Type = has
 }
 
+func sanitiseGeneric(value string) string {
+	clean := regexp.MustCompile(`[^a-zA-Z0-9]`)
+	return clean.ReplaceAllString(value, "")
+}
+
 func (schema *Schema) buildMany2ManyRelation(relation *Relationship, field *Field, many2many string) {
 	relation.Type = Many2Many
 
@@ -266,7 +271,7 @@ func (schema *Schema) buildMany2ManyRelation(relation *Relationship, field *Fiel
 	}
 
 	for idx, ownField := range ownForeignFields {
-		joinFieldName := strings.Title(schema.Name) + ownField.Name
+		joinFieldName := strings.Title(sanitiseGeneric(schema.Name)) + ownField.Name
 		if len(joinForeignKeys) > idx {
 			joinFieldName = strings.Title(joinForeignKeys[idx])
 		}
@@ -283,7 +288,7 @@ func (schema *Schema) buildMany2ManyRelation(relation *Relationship, field *Fiel
 	}
 
 	for idx, relField := range refForeignFields {
-		joinFieldName := strings.Title(relation.FieldSchema.Name) + relField.Name
+		joinFieldName := strings.Title(sanitiseGeneric(relation.FieldSchema.Name)) + relField.Name
 
 		if _, ok := ownFieldsMap[joinFieldName]; ok {
 			if field.Name != relation.FieldSchema.Name {
@@ -312,7 +317,7 @@ func (schema *Schema) buildMany2ManyRelation(relation *Relationship, field *Fiel
 	}
 
 	joinTableFields = append(joinTableFields, reflect.StructField{
-		Name: strings.Title(schema.Name) + field.Name,
+		Name: strings.Title(sanitiseGeneric(schema.Name)) + field.Name,
 		Type: schema.ModelType,
 		Tag:  `gorm:"-"`,
 	})
