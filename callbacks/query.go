@@ -6,10 +6,10 @@ import (
 	"sort"
 	"strings"
 
-	"gorm.io/gorm"
-	"gorm.io/gorm/clause"
-	"gorm.io/gorm/schema"
-	"gorm.io/gorm/utils"
+	"github.com/watchforstock/gorm"
+	"github.com/watchforstock/gorm/clause"
+	"github.com/watchforstock/gorm/schema"
+	"github.com/watchforstock/gorm/utils"
 )
 
 func Query(db *gorm.DB) {

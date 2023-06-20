@@ -4,8 +4,8 @@ import (
 	"reflect"
 	"sort"
 
-	"gorm.io/gorm"
-	"gorm.io/gorm/clause"
+	"github.com/watchforstock/gorm"
+	"github.com/watchforstock/gorm/clause"
 )
 
 // ConvertMapToValuesForCreate convert map to values

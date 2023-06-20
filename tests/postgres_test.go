@@ -6,9 +6,9 @@ import (
 
 	"github.com/google/uuid"
 	"github.com/lib/pq"
-	"gorm.io/gorm"
-	"gorm.io/gorm/clause"
-	. "gorm.io/gorm/utils/tests"
+	"github.com/watchforstock/gorm"
+	"github.com/watchforstock/gorm/clause"
+	. "github.com/watchforstock/gorm/utils/tests"
 )
 
 func TestPostgresReturningIDWhichHasStringType(t *testing.T) {

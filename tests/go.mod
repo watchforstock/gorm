@@ -1,4 +1,4 @@
-module gorm.io/gorm/tests
+module github.com/watchforstock/gorm/tests
 
 go 1.16
 
@@ -12,7 +12,7 @@ require (
 	gorm.io/driver/postgres v1.5.0
 	gorm.io/driver/sqlite v1.5.0
 	gorm.io/driver/sqlserver v1.5.1
-	gorm.io/gorm v1.25.1
+	github.com/watchforstock/gorm v1.25.1
 )
 
-replace gorm.io/gorm => ../
+replace github.com/watchforstock/gorm => ../
